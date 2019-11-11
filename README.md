@@ -153,11 +153,7 @@ In this repo there is included a `main.vcl` file which is our base config. In ea
   ############################################
 ````
 
-<<<<<<< HEAD
-There is also a folder called `workshop-1` which contains our configurations for  logging.
-=======
-There is also a folder called `workshop-1` which contains our configurations for logging. 
->>>>>>> upstream/master
+There is also a folder called `workshop-1` which contains our configurations for logging.
 
 Add the contents from `vcl_recv.vcl` from this directory in your repo into this section. It should look like this at the end:
 
@@ -165,14 +161,9 @@ Add the contents from `vcl_recv.vcl` from this directory in your repo into this 
   ############################################
   # VIDEO WORKSHOP: INSERT vcl_recv CODE HERE
   ############################################
-<<<<<<< HEAD
 
-  # Record number of retrans on the connection
-  set req.http.total_retrans = client.socket.tcpi_total_retrans;
-=======
- 
   #### vcl_recv ####
- 
+
   set client.geo.ip_override = req.http.fastly-client-ip;
   set req.http.log-request:host = req.http.host;
   set req.http.log-request:method = req.method;
@@ -186,7 +177,6 @@ Add the contents from `vcl_recv.vcl` from this directory in your repo into this 
     set req.http.X-Fastly-GUID = "";
   }
   ##################
->>>>>>> upstream/master
 
 
   ############################################
@@ -196,21 +186,12 @@ Add the contents from `vcl_recv.vcl` from this directory in your repo into this 
 
 Next, add the logging configuration to the rest of the sections in our VCL:
 
-<<<<<<< HEAD
-* `vcl_miss` (`logging-vcl_miss.vcl`)
-* `vcl_pass` (`logging-vcl_pass.vcl`)
-* `vcl_fetch` (`logging-vcl_fetch.vcl`)
-* `vcl_deliver` (`logging-vcl_deliver.vcl`)
-* `vcl_error` (`logging-vcl_error.vcl`)
-* `vcl_log` (`logging-vcl_log.vcl`)
-=======
 * `vcl_miss` (`vcl_miss.vcl`)
-* `vcl_pass` (`vcl_pass.vcl`) 
+* `vcl_pass` (`vcl_pass.vcl`)
 * `vcl_fetch` (`vcl_fetch.vcl`)
 * `vcl_deliver` (`vcl_deliver.vcl`)
 * `vcl_error` (`vcl_error.vcl`)
 * `vcl_log` (`vcl_log.vcl`)
->>>>>>> upstream/master
 
 ### Step 3: Upload and activate configuration
 
@@ -364,13 +345,8 @@ Finally, we can add our TCP optimisations in `vcl_deliver`. These can be found i
   ############################################
   # VIDEO WORKSHOP: INSERT vcl_deliver CODE HERE
   ############################################
-<<<<<<< HEAD
 
-  # increase init cwnd
-=======
-  
   # increase init cwnd and use BBR
->>>>>>> upstream/master
   if (client.requests == 1) {
     set client.socket.cwnd = 45;
     set client.socket.congestion_algorithm = "bbr";
